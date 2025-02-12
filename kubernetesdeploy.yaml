@@ -1,34 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bankapp-eta-deploy
+  name: finance-me-deploy
   labels:
-    app: bankapp-eta-app
+    app: finance-me-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: bankapp-eta-app
+      app: fianance-me-app
   template:
     metadata:
       labels:
-        app: bankapp-eta-app
+        app: finance-me-app
     spec:
       containers:
-      - name: bankapp-eta-container
-        image: loksaieta/bankapp-eta-app
+      - name: finance-me-container
+        image: ayath/finance-me-app
         ports:
         - containerPort: 8082
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: bankapp-eta-np-service
+  name: finance-me-np-service
   labels:
-    app: bankapp-eta-app
+    app: finance-me-app
 spec:
   selector:
-    app: bankapp-eta-app
+    app: finance-me-app
 
   type: NodePort
   ports:
